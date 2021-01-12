@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">My first app</string>
+    <string name="welcome">Welcome!</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="sign_in">Sign in</string>
+    <string name="eid">Enter email ID</string>
+    <string name="password">Enter Password</string>
+    <string name="con_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="need_help">Need Help?</string>
+    <string name="dont_ac">Don\'t have any account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="have_ac">Already have an account?</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="title_activity_option">Option</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
