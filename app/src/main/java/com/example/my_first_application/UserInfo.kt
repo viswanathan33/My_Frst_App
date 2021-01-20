@@ -1,10 +1,10 @@
 package com.example.my_first_application
 
-public class UserInfo {
+class UserInfo {
     private var name: String? = null
     private var email: String? = null
     private var password: String? = null
-    private var confirm_password: String? = null
+    private var confirmPassword: String? = null
     fun setName(name: String?) {
         this.name = name
     }
@@ -14,8 +14,8 @@ public class UserInfo {
     fun setpassword(password: String?) {
         this.password = password
     }
-    fun setConfirm_password(confirm_password: String?) {
-        this.confirm_password = confirm_password
+    fun setConfirmPassword(confirm_password: String?) {
+        this.confirmPassword = confirm_password
     }
     fun getName():String?{
         return name
@@ -26,7 +26,7 @@ public class UserInfo {
     fun getPassword():String?{
         return password
     }
-    fun getConfirm_password():String?{
-        return confirm_password
+    fun getConfirmPassword():String?{
+        return confirmPassword
     }
 }

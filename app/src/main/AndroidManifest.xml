@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_First_Application">
-        <activity android:name=".SigupActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".SigupActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".GreetingsActivity">

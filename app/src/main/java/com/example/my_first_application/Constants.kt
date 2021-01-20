@@ -13,8 +13,6 @@ class Constants {
         const val password_condition6 = "A digit must occur atleast only once"
         const val confirm_password_condition = "password does not match"
         const val share_pref = "shared pref"
-        const val sh_pre_mail = "mail"
-        const val sh_pre_password = "pass"
         const val USER_INFO = "USER_INFO"
     }
 }

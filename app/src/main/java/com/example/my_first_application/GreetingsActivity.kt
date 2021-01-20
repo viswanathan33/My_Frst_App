@@ -12,10 +12,12 @@ class GreetingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_greeting)
-        val sharedPreferences:SharedPreferences=getSharedPreferences(Constants.BundleKey.share_pref,
+        val actionBar = supportActionBar
+        actionBar!!.hide()
+        val sharedPreferences:SharedPreferences=getSharedPreferences(Constants.share_pref,
             Context.MODE_PRIVATE)
-        val sh_rf: String? =sharedPreferences.getString(Constants.BundleKey.USER_INFO,"")
-        if (sh_rf=="") {
+        val shrf: String? = sharedPreferences.getString(Constants.USER_INFO, "")
+        if (shrf=="") {
             val greetings = findViewById<Button>(R.id.buttonStart)
             val timer = Timer()
             timer.schedule(object : TimerTask() {

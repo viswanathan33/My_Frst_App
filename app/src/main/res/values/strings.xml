@@ -12,5 +12,9 @@
     <string name="sign_up">Sign up</string>
     <string name="have_ac">Already have an account?</string>
     <string name="enter_name">Enter Name</string>
+    <string name="enter_gender">Enter Gender</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="register">Register</string>
+    <string name="todo">TODO</string>
     <string name="title_activity_option">Option</string>
 </resources>
