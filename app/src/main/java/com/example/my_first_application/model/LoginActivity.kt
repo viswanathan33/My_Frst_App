@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences(Constants.share_pref, Context.MODE_PRIVATE)
         actionBar!!.hide()
         login.setOnClickListener {
+            val g2son = Gson()
             val gson = Gson()
             val userInfo = UserInfo()
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
