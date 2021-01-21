@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.my_first_application.R
 import com.example.my_first_application.model.RegisterInfo
 
-internal class UserDetailsAdapter(private var exampleList:List<RegisterInfo>) : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
+internal class UserDetailsAdapter(private var userList:List<RegisterInfo>) : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
-        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.example_item,parent,false)
+        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.user_item,parent,false)
        return ExampleViewHolder(itemView)
     }
 
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
-        val currentItem=exampleList[position]
+        val currentItem=userList[position]
         holder.name.text=currentItem.getName()
         holder.gender.text=currentItem.getGender()
         holder.mail.text=currentItem.getEmail()
@@ -26,7 +26,7 @@ internal class UserDetailsAdapter(private var exampleList:List<RegisterInfo>) : 
     }
 
     override fun getItemCount():Int{
-        return exampleList.size
+        return userList.size
     }
 
    internal inner class ExampleViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
