@@ -48,13 +48,13 @@ class SigupActivity : AppCompatActivity() {
                 else if (userInfo.getPassword()!!.length < 8) {
                     password.error = getString(R.string.passwordLength)
                 }
-                else if (userInfo.getPassword()!!.trim().matches(Constants.passwordPattern.toRegex()))
+                else if (userInfo.getPassword()!!.trim().matches(Constants.passwordPatternDigit.toRegex()))
                 {
-                    if (userInfo.getPassword()!!.trim().matches(Constants.passwordPattern1.toRegex()))
+                    if (userInfo.getPassword()!!.trim().matches(Constants.passwordPatternLowerCase.toRegex()))
                     {
-                        if (userInfo.getPassword()!!.trim().matches(Constants.passwordPattern2.toRegex()))
+                        if (userInfo.getPassword()!!.trim().matches(Constants.passwordPatternUpperCase.toRegex()))
                         {
-                            if (userInfo.getPassword()!!.trim().matches(Constants.passwordPattern3.toRegex()))
+                            if (userInfo.getPassword()!!.trim().matches(Constants.passwordPatternSplChar.toRegex()))
                             {
                                 if (userInfo.getPassword()!! == userInfo.getConfirmPassword())
                                 {
