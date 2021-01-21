@@ -1,4 +1,4 @@
-package com.example.my_first_application.model
+package com.example.my_first_application.activity
 
 import android.content.Context
 import android.content.Intent

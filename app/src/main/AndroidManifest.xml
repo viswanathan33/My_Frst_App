@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_First_Application">
-        <activity android:name=".model.RegisterActivity"></activity>
-        <activity android:name=".model.SigupActivity" />
-        <activity android:name=".model.HomeActivity" />
-        <activity android:name=".model.LoginActivity" />
-        <activity android:name=".model.GreetingsActivity">
+        <activity android:name=".activity.RegisterActivity"></activity>
+        <activity android:name=".activity.SigupActivity" />
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.GreetingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

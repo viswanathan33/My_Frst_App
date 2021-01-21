@@ -15,6 +15,16 @@
     <string name="enter_gender">Enter Gender</string>
     <string name="enter_age">Enter Age</string>
     <string name="register">Register</string>
+    <string name="nameEmpty">enter name</string>
+    <string name="mailEmpty">enter mail id</string>
+    <string name="invalidMail">invalid mail id</string>
+    <string name="passwordEmpty">enter password</string>
+    <string name="passwordLength">password is too short</string>
+    <string name="passwordSplChar">A special character must occur atleast only once</string>
+    <string name="passwordUpperCase">A Uppercase case letter must occur atleast only once</string>
+    <string name="passwordLowerCase">A lower case letter must occur atleast only once</string>
+    <string name="passwordDigit">A digit must occur atleast only once</string>
+    <string name="passwordMatch">password does not match</string>
     <string name="todo">TODO</string>
     <string name="title_activity_option">Option</string>
 </resources>

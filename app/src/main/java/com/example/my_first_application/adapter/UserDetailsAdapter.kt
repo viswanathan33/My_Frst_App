@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_first_application.R
-import com.example.my_first_application.pojo.RegisterInfo
+import com.example.my_first_application.model.RegisterInfo
 
 internal class UserDetailsAdapter(private var exampleList:List<RegisterInfo>) : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
 

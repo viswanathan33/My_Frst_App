@@ -1,4 +1,4 @@
-package com.example.my_first_application.pojo
+package com.example.my_first_application.model
 
 class UserInfo {
     private var name: String? = null

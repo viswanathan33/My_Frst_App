@@ -1,4 +1,4 @@
-package com.example.my_first_application.model
+package com.example.my_first_application.activity
 
 import android.app.Activity
 import android.content.Context
@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.my_first_application.R
 import com.example.my_first_application.adapter.UserDetailsAdapter
 import com.example.my_first_application.constant.Constants
-import com.example.my_first_application.pojo.RegisterInfo
+import com.example.my_first_application.model.RegisterInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import java.util.*

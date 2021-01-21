@@ -1,4 +1,4 @@
-package com.example.my_first_application.model
+package com.example.my_first_application.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.my_first_application.R
 import com.example.my_first_application.constant.Constants
-import com.example.my_first_application.pojo.RegisterInfo
+import com.example.my_first_application.model.RegisterInfo
 import com.google.gson.Gson
 
 class RegisterActivity : AppCompatActivity() {
