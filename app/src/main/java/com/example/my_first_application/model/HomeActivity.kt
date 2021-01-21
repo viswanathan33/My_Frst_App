@@ -1,4 +1,4 @@
-package com.example.my_first_application
+package com.example.my_first_application.model
 
 import android.app.Activity
 import android.content.Context
@@ -13,27 +13,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.my_first_application.R
+import com.example.my_first_application.adapter.UserDetailsAdapter
+import com.example.my_first_application.constant.Constants
+import com.example.my_first_application.pojo.RegisterInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private val gson= Gson()
-    private val exampleList = ArrayList<RegisterInfo>()
-    private lateinit var exampleAdapter: ExampleAdapter
+    private val userList = ArrayList<RegisterInfo>()
+    private lateinit var userListAdapter: UserDetailsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        exampleAdapter = ExampleAdapter(exampleList)
+        userListAdapter = UserDetailsAdapter(userList)
         val layoutManager = LinearLayoutManager(applicationContext)
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.adapter = exampleAdapter
-
-        val add=findViewById<FloatingActionButton>(R.id.floatingActionButton_add)
-        add.setOnClickListener {
-            val intent=Intent(this,RegisterActivity::class.java)
+        val userListView: RecyclerView = findViewById(R.id.recycler_view)
+        val floatButtonAdd=findViewById<FloatingActionButton>(R.id.floatingActionButton_add)
+        userListView.layoutManager = layoutManager
+        userListView.itemAnimator = DefaultItemAnimator()
+        userListView.adapter = userListAdapter
+        floatButtonAdd.setOnClickListener {
+            val intent=Intent(this, RegisterActivity::class.java)
             startActivityForResult(intent,1)
         }
     }
@@ -44,9 +47,9 @@ class HomeActivity : AppCompatActivity() {
             if (requestCode==1){
                 if (data!=null){
                     val json:String?=data.getStringExtra(Constants.USER_INFO)
-                    val registerInfo= gson.fromJson(json,RegisterInfo::class.java)
-                    exampleList.add(registerInfo)
-                    exampleAdapter.notifyItemChanged(0)
+                    val registerInfo= gson.fromJson(json, RegisterInfo::class.java)
+                    userList.add(registerInfo)
+                    userListAdapter.notifyItemChanged(0)
 
                 }
             }
@@ -54,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.drop_menu   , menu)
+        menuInflater.inflate(R.menu.drop_menu, menu)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -67,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "item 2 selected", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.item3 -> {
+            R.id.logoutItem -> {
                 val sharedPreferences:SharedPreferences=getSharedPreferences(Constants.share_pref, Context.MODE_PRIVATE)
                 val editor: Editor = sharedPreferences.edit()
                 editor.clear()

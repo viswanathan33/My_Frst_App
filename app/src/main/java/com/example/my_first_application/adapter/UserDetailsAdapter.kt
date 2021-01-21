@@ -1,12 +1,14 @@
-package com.example.my_first_application
+package com.example.my_first_application.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.my_first_application.R
+import com.example.my_first_application.pojo.RegisterInfo
 
-internal class ExampleAdapter(private var exampleList:List<RegisterInfo>) : RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>(){
+internal class UserDetailsAdapter(private var exampleList:List<RegisterInfo>) : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.example_item,parent,false)

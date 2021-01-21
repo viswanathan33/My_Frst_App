@@ -1,4 +1,4 @@
-package com.example.my_first_application
+package com.example.my_first_application.model
 
 import android.content.Context
 import android.content.Intent
@@ -8,19 +8,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.my_first_application.R
+import com.example.my_first_application.constant.Constants
+import com.example.my_first_application.pojo.UserInfo
 import com.google.gson.Gson
 
 class SigupActivity : AppCompatActivity() {
-    private var mailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
-    private var passwordPattern = "^(?=.*[0-9])" + ".{0,}$"
-    private var passwordPattern1 = "^(?=.*[a-z])" + ".{0,}$"
-    private var passwordPattern2 = "^(?=.*[A-Z])" + ".{0,}$"
-    private var passwordPattern3 = "^(?=.*[@#$%^&+=])" + ".{0,}$"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
         val actionBar = supportActionBar
-        actionBar!!.hide()
         val name=findViewById<EditText>(R.id.editTextTextPersonName)
         val email=findViewById<EditText>(R.id.editTextTextEmailAddress1)
         val password=findViewById<EditText>(R.id.editTextTextPassword1)
@@ -28,15 +25,16 @@ class SigupActivity : AppCompatActivity() {
         val sigup=findViewById<Button>(R.id.button_signup)
         val login=findViewById<TextView>(R.id.textView_login)
         val sharedPreferences=getSharedPreferences(Constants.share_pref, Context.MODE_PRIVATE)
+        actionBar!!.hide()
         sigup.setOnClickListener {
             val gson=Gson()
-            val userInfo=UserInfo()
+            val userInfo= UserInfo()
+            val editor:SharedPreferences.Editor=sharedPreferences.edit()
+            val json:String=gson.toJson(userInfo)
             userInfo.setName(name.text.toString())
             userInfo.setEmail(email.text.toString())
             userInfo.setpassword(password.text.toString())
             userInfo.setConfirmPassword(confirmPassword.text.toString())
-            val editor:SharedPreferences.Editor=sharedPreferences.edit()
-            val json:String=gson.toJson(userInfo)
             if (userInfo.getName()?.isEmpty()!!){
                 name.error = Constants.name_condition
             }
@@ -44,7 +42,7 @@ class SigupActivity : AppCompatActivity() {
                 if (userInfo.getEmail()?.isEmpty()!!) {
                     email.error = Constants.mail_condition1
                 } else {
-                    if (userInfo.getEmail()!!.trim().matches(mailPattern.toRegex())) {
+                    if (userInfo.getEmail()!!.trim().matches(Constants.mailPattern.toRegex())) {
                         if (userInfo.getPassword()?.isEmpty()!!) {
                             password.error = Constants.password_condition1
                         } else {
@@ -52,16 +50,16 @@ class SigupActivity : AppCompatActivity() {
                                 password.error = Constants.password_condition2
                             } else {
                                 if (userInfo.getPassword()!!.trim()
-                                        .matches(passwordPattern.toRegex())
+                                        .matches(Constants.passwordPattern.toRegex())
                                 ) {
                                     if (userInfo.getPassword()!!.trim()
-                                            .matches(passwordPattern1.toRegex())
+                                            .matches(Constants.passwordPattern1.toRegex())
                                     ) {
                                         if (userInfo.getPassword()!!.trim()
-                                                .matches(passwordPattern2.toRegex())
+                                                .matches(Constants.passwordPattern2.toRegex())
                                         ) {
                                             if (userInfo.getPassword()!!.trim()
-                                                    .matches(passwordPattern3.toRegex())
+                                                    .matches(Constants.passwordPattern3.toRegex())
                                             ) {
                                                 if (userInfo.getPassword()!! == userInfo.getConfirmPassword()){
                                                     editor.putString(Constants.USER_INFO, json)
@@ -86,7 +84,7 @@ class SigupActivity : AppCompatActivity() {
             }
         }
         login.setOnClickListener {
-            val intent=Intent(this,LoginActivity::class.java)
+            val intent=Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

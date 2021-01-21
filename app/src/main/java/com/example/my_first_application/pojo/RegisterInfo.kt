@@ -1,4 +1,4 @@
-package com.example.my_first_application
+package com.example.my_first_application.pojo
 
 class RegisterInfo(name:String?,gender:String?,mail:String?,age:String?) {
     private var name:String = name!!
