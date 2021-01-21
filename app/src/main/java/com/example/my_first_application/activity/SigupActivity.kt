@@ -35,7 +35,11 @@ class SigupActivity : AppCompatActivity() {
             userInfo.setEmail(email.text.toString())
             userInfo.setpassword(password.text.toString())
             userInfo.setConfirmPassword(confirmPassword.text.toString())
-            if (userInfo.getEmail()?.isEmpty()!!)
+            if (userInfo.getName()?.isEmpty()!!)
+            {
+                name.error = getString(R.string.nameEmpty)
+            }
+            else if (userInfo.getEmail()?.isEmpty()!!)
             {
                 email.error = getString(R.string.mailEmpty)
             }
@@ -60,8 +64,7 @@ class SigupActivity : AppCompatActivity() {
                                 {
                                     editor.putString(Constants.USER_INFO, json)
                                     editor.apply()
-                                    val intent = Intent(this, HomeActivity::class.java)
-                                    startActivity(intent)
+                                    Constants.callActivity(this, HomeActivity::class.java)
                                     finish()
                                 }
                                 else
@@ -97,8 +100,7 @@ class SigupActivity : AppCompatActivity() {
 
         }
         login.setOnClickListener {
-            val intent=Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            Constants.callActivity(this, LoginActivity::class.java)
             finish()
         }
     }

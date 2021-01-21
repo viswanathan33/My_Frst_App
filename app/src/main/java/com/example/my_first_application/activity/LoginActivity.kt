@@ -54,8 +54,7 @@ class LoginActivity : AppCompatActivity() {
                             {
                                 editor.putString(Constants.USER_INFO, json)
                                 editor.apply()
-                                val intent = Intent(this, HomeActivity::class.java)
-                                startActivity(intent)
+                                Constants.callActivity(this, HomeActivity::class.java)
                                 finish()
                             }
                             else
@@ -87,8 +86,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         sigup.setOnClickListener {
-            val intent=Intent(this, SigupActivity::class.java)
-            startActivity(intent)
+            Constants.callActivity(this, SigupActivity::class.java)
             finish()
         }
 

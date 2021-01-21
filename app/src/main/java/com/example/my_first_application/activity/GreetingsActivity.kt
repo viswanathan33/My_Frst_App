@@ -23,21 +23,21 @@ class GreetingsActivity : AppCompatActivity() {
         if (shrf.isNullOrEmpty()) {
             timer.schedule(object : TimerTask() {
                 override fun run() {
-                    val intent = Intent(this@GreetingsActivity, LoginActivity::class.java)
+                    Constants.callActivity(this@GreetingsActivity,LoginActivity::class.java)
+                    /*val intent = Intent(this@GreetingsActivity, LoginActivity::class.java)
                     startActivity(intent)
+                     finish()*/
                     finish()
                 }
             }, 3000)
             greetings.setOnClickListener {
                 timer.cancel()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                Constants.callActivity(this@GreetingsActivity,LoginActivity::class.java)
                 finish()
             }
         }
         else{
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            Constants.callActivity(this, HomeActivity::class.java)
             finish()
         }
     }
