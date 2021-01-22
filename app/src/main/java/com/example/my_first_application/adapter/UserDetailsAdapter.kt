@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_first_application.R
+import com.example.my_first_application.data.UserDetails
 import com.example.my_first_application.model.RegisterInfo
 
-internal class UserDetailsAdapter(private var userList:List<RegisterInfo>) : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
+internal class UserDetailsAdapter : RecyclerView.Adapter<UserDetailsAdapter.ExampleViewHolder>(){
 
+    private var userList= emptyList<UserDetails>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.user_item,parent,false)
        return ExampleViewHolder(itemView)
@@ -18,10 +20,11 @@ internal class UserDetailsAdapter(private var userList:List<RegisterInfo>) : Rec
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem=userList[position]
-        holder.name.text=currentItem.getName()
-        holder.gender.text=currentItem.getGender()
-        holder.mail.text=currentItem.getEmail()
-        holder.age.text=currentItem.getAge()
+        holder.name.text=currentItem.id.toString()
+        holder.gender.text=currentItem.name
+        holder.mail.text=currentItem.gender
+        holder.age.text=currentItem.mail
+        holder.age.text=currentItem.age
 
     }
 
@@ -34,5 +37,10 @@ internal class UserDetailsAdapter(private var userList:List<RegisterInfo>) : Rec
         val gender:TextView=itemView.findViewById(R.id.gender)
         val mail:TextView=itemView.findViewById(R.id.email)
         val age:TextView=itemView.findViewById(R.id.age)
+    }
+
+    fun setData(userDetails: List<UserDetails>){
+        this.userList=userDetails
+        notifyDataSetChanged()
     }
 }

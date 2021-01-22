@@ -10,12 +10,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.my_first_application.R
 import com.example.my_first_application.adapter.UserDetailsAdapter
 import com.example.my_first_application.constant.Constants
+import com.example.my_first_application.data.UserViewModel
 import com.example.my_first_application.model.RegisterInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
@@ -23,37 +25,28 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private val gson= Gson()
-    private val userList = ArrayList<RegisterInfo>()
+    private lateinit var mUserViewModel:UserViewModel
     private lateinit var userListAdapter: UserDetailsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        userListAdapter = UserDetailsAdapter(userList)
+        userListAdapter = UserDetailsAdapter()
         val layoutManager = LinearLayoutManager(applicationContext)
         val userListView: RecyclerView = findViewById(R.id.recycler_view)
         val floatButtonAdd=findViewById<FloatingActionButton>(R.id.floatingActionButton_add)
+
+
         userListView.layoutManager = layoutManager
         userListView.itemAnimator = DefaultItemAnimator()
         userListView.adapter = userListAdapter
+        mUserViewModel=ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel.readAllData.observe(this, androidx.lifecycle.Observer { userDetails ->
+            userListAdapter.setData(userDetails)
+        })
+
+
         floatButtonAdd.setOnClickListener {
-            val intent=Intent(this, RegisterActivity::class.java)
-            startActivityForResult(intent,1)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode==Activity.RESULT_OK){
-            if (requestCode==1){
-                if (data!=null){
-                    val json:String?=data.getStringExtra(Constants.USER_INFO)
-                    val registerInfo= gson.fromJson(json, RegisterInfo::class.java)
-                    userList.add(registerInfo)
-                    userListAdapter.notifyItemChanged(0)
-
-                }
-            }
-
+            Constants.callActivity(this, RegisterActivity::class.java)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
