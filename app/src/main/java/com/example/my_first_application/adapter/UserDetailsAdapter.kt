@@ -20,10 +20,9 @@ internal class UserDetailsAdapter : RecyclerView.Adapter<UserDetailsAdapter.Exam
 
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
         val currentItem=userList[position]
-        holder.name.text=currentItem.id.toString()
-        holder.gender.text=currentItem.name
-        holder.mail.text=currentItem.gender
-        holder.age.text=currentItem.mail
+        holder.name.text=currentItem.name
+        holder.gender.text=currentItem.gender
+        holder.mail.text=currentItem.mail
         holder.age.text=currentItem.age
 
     }
