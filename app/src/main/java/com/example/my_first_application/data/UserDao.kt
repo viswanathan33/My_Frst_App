@@ -9,7 +9,15 @@ import androidx.room.Query
 @Dao
 interface UserDao {
     @Insert(onConflict=OnConflictStrategy.IGNORE)
-    suspend fun addUser(userDetails: UserDetails)
+    fun addUser(userDetails: UserDetails)
+
+    @Insert(onConflict=OnConflictStrategy.IGNORE)
+    fun addLogin(userLogIn: UserLogIn)
+
+
     @Query("SELECT*FROM userTable")
     fun readAllData():LiveData<List<UserDetails>>
+
+    @Query("SELECT*FROM userLoginTable WHERE email =:mail AND password=:mPassword")
+    fun logInCheck(mail:String,mPassword:String):UserLogIn
 }

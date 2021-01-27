@@ -1,6 +1,5 @@
 package com.example.my_first_application.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -18,10 +17,8 @@ import com.example.my_first_application.R
 import com.example.my_first_application.adapter.UserDetailsAdapter
 import com.example.my_first_application.constant.Constants
 import com.example.my_first_application.data.UserViewModel
-import com.example.my_first_application.model.RegisterInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private val gson= Gson()
@@ -46,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         floatButtonAdd.setOnClickListener {
-            Constants.callActivity(this, RegisterActivity::class.java)
+            Constants.callActivity(this, AddUserActivity::class.java)
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

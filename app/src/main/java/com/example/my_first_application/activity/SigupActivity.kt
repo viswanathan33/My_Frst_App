@@ -8,12 +8,17 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.my_first_application.R
 import com.example.my_first_application.constant.Constants
+import com.example.my_first_application.data.UserLogIn
+import com.example.my_first_application.data.UserViewModel
 import com.example.my_first_application.model.UserInfo
 import com.google.gson.Gson
 
 class SigupActivity : AppCompatActivity() {
+    private lateinit var mUserViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -25,6 +30,7 @@ class SigupActivity : AppCompatActivity() {
         val sigup=findViewById<Button>(R.id.button_signup)
         val login=findViewById<TextView>(R.id.textView_login)
         val sharedPreferences=getSharedPreferences(Constants.share_pref, Context.MODE_PRIVATE)
+        mUserViewModel= ViewModelProvider(this).get(UserViewModel::class.java)
         actionBar!!.hide()
         sigup.setOnClickListener {
             val gson=Gson()
@@ -62,6 +68,11 @@ class SigupActivity : AppCompatActivity() {
                             {
                                 if (userInfo.getPassword()!! == userInfo.getConfirmPassword())
                                 {
+                                    val dbmail=email.text.toString()
+                                    val dbpassword=password.text.toString()
+                                    val userLogIn= UserLogIn(dbmail,dbpassword)
+                                    mUserViewModel.addLogin(userLogIn)
+                                    Toast.makeText(applicationContext, "sign up succesfully", Toast.LENGTH_SHORT).show()
                                     editor.putString(Constants.USER_INFO, json)
                                     editor.apply()
                                     Constants.callActivity(this, HomeActivity::class.java)

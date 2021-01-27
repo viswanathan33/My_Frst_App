@@ -15,15 +15,11 @@ import com.example.my_first_application.data.UserViewModel
 import com.example.my_first_application.model.RegisterInfo
 import com.google.gson.Gson
 
-class RegisterActivity : AppCompatActivity() {
+class AddUserActivity : AppCompatActivity() {
     private lateinit var mUserViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        val name=findViewById<EditText>(R.id.personName)
-        val mail=findViewById<EditText>(R.id.mail)
-        val gender=findViewById<EditText>(R.id.gender)
-        val age=findViewById<EditText>(R.id.age)
         val register=findViewById<Button>(R.id.button_register)
         mUserViewModel=ViewModelProvider(this).get(UserViewModel::class.java)
         val actionBar = supportActionBar

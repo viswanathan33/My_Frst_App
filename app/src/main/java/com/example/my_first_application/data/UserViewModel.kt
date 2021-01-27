@@ -1,6 +1,7 @@
 package com.example.my_first_application.data
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -22,5 +23,15 @@ class UserViewModel(application: Application):AndroidViewModel(application) {
         viewModelScope.launch (Dispatchers.IO){
             repository.addUser(userDetails)
         }
+    }
+    fun addLogin(userLogIn: UserLogIn){
+        viewModelScope.launch (Dispatchers.IO){
+            repository.addLogin(userLogIn)
+        }
+    }
+    fun logInCheck(mMail:String,mPassword:String):UserLogIn{
+        val userLogIn:UserLogIn=repository.logInCheck(mMail,mPassword)
+        return userLogIn
+
     }
 }
